@@ -17,24 +17,30 @@ const Home = ({ setSelectedPage }: Props) => {
   return (
     <section id="home" className="gap-16 bg-gray-20 pb-10 pt-10 md:h-full">
       {/*IMAGE AND MAIN HEADER*/}
-      <div>
+      <div className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6">
         {/*MAIN HEADER*/}
-        <div>
+        <div className="z-10 mt-32 md:basis-3/5">
           {/*HEADINGS*/}
-          <div>
-            <div>
-              <div>
+          <div className="md:-mt-20">
+            <div className="relative">
+              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
                 <img alt="home-page-text" src={HomePageText} />
               </div>
               {/*ACTIONS*/}
-              <ActionButton setSelectedPage={setSelectedPage}>
-                Join Now
-              </ActionButton>
-              <AnchorLink className="text-sm font-bold text-primary-500 underline hover:text-secondary-500">
-
-              </AnchorLink>
+              <div className="mt-8 flex items-center gap-8">
+                <ActionButton setSelectedPage={setSelectedPage}>
+                  Join Now
+                </ActionButton>
+                <AnchorLink
+                  className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
+                  onClick={() => setSelectedPage(SelectedPage.ContactUs)}
+                  href={`#${SelectedPage.ContactUs}`}
+                >
+                  <p>Learn More</p>
+                </AnchorLink>
+              </div>
             </div>
-            <p>
+            <p className="md:text-startv mt-8 text-sm">
               Unrivaled Gym. Unparalleled Training Fitness Classes. World
               Classes. Studios to get the Body Shapes That ypu Dream of... Get
               Yout Dream Body now.
@@ -42,8 +48,23 @@ const Home = ({ setSelectedPage }: Props) => {
           </div>
         </div>
         {/*IMAGE*/}
-        <div></div>
+        <div className="flex basis-3/5 justify-center md:z-10 
+            md:ml-40 md:mt-16 md:justify-items-end">
+          <img alt="home-pageGraphic" src={HomePageGraphic} />
+        </div>
       </div>
+      {/*SPONSORS*/}
+      {isAboveMediumScreens && (
+        <div className="h-[150px] w-full bg-primary-100 py-10">
+          <div className="mx-auto w-5/6">
+            <div className="flex w-3/5 items-center justify-between gap-8">
+              <img alt="redbull-sponsor" src={SponsorRedBull} />
+              <img alt="forbes-sponsor" src={SponsorForbes} />
+              <img alt="fortune-sponsor" src={SponsorFortune} />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
